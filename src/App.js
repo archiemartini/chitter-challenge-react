@@ -1,25 +1,42 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect, useState } from "react"
+import Navbar from "./components/Navbar"
+import Peep from "./components/Peep"
+import api from './api/base'
 
-function App() {
+export default function App() {
+
+  const [peepData, setPeepData] = useState([])
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await api.get('/peeps')
+        setPeepData(response.data)
+        console.log(response.data)
+      } catch (err) {
+
+      }
+    }
+    fetchData()
+  }, [])
+
+  const peepList =
+    peepData.map((peep) => {
+      return (
+        <Peep 
+        key={peep.id}
+        {...peep}
+        />
+      )
+    })
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <>
+      <Navbar />
+      <div className="peeps-container">
+        {peepList}
+      </div>
+      
+    </>
+  )
 }
-
-export default App;
