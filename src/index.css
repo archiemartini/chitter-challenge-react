@@ -37,15 +37,39 @@ nav {
 
 }
 
+.header {
+  margin-left: 20px;
+}
+
+.main-container {
+  display: flex;
+  align-items: center;
+}
+
 .peeps-container {
   padding: 20px;
   display: flex;
-  flex-flow: column;
+  flex-flow: column wrap;
+  justify-content: auto;
+  align-items: flex-start;
   
 }
 
 .peep {
-  background-color: #12a5f3;
+  background-color: #d4dce1;
+  width: 500px;
   border-radius: 2px;
   padding: 5px;
+  /* align-self: flex-start; */
+  margin-bottom: 5px;
+}
+
+.peep--username {
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+.peep--bodytext {
+  padding: 10px;
+  margin-top: 10px;
 }

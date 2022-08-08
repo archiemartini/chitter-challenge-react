@@ -33,8 +33,11 @@ export default function App() {
   return (
     <>
       <Navbar />
-      <div className="peeps-container">
-        {peepList}
+      <h1 className="header">News Feed</h1>
+      <div className="main-container">
+        <div className="peeps-container">
+          {peepList}
+        </div>
       </div>
       
     </>
