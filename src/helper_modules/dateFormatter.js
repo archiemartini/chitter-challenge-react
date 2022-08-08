@@ -9,7 +9,8 @@ export default  function dateTimeFormatter(dateTimeString) {
 
     let calendar = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
     return calendar[month - 1]
-  } 
+  }
+  
   const ordinalDate = (dateString) => {
    let dayNum = dateString.slice(8, 10)
 
@@ -17,18 +18,16 @@ export default  function dateTimeFormatter(dateTimeString) {
     dayNum = dayNum[1]
    };
 
-  let selector;
+    let selector;
 
-   if (dayNum <= 0) {
-    selector = 4;
-  } else if ((dayNum > 3 && dayNum < 21) || dayNum % 10 > 3) {
-    selector = 0;
-  } else {
-    selector = dayNum % 10;
-  }
-
-  return dayNum + ['th', 'st', 'nd', 'rd', ''][selector];
-
+    if (dayNum <= 0) {
+      selector = 4;
+    } else if ((dayNum > 3 && dayNum < 21) || dayNum % 10 > 3) {
+      selector = 0;
+    } else {
+      selector = dayNum % 10;
+    }
+    return dayNum + ['th', 'st', 'nd', 'rd', ''][selector];
   }
   
 return `${monthName(date)} ${ordinalDate(date)}`

@@ -17,19 +17,57 @@ nav {
   top: 0px;
   background-color: #12a5f3;
   display: flex;
+  gap: 2rem;
   align-items: center;
+  justify-content: space-between;
   color: whitesmoke;
 }
 
-.nav--logo_text, .nav--title {
+.nav--logo_text, .nav--button {
   margin: 0;
+}
+
+a:link {
+  text-decoration: none;
+  color: whitesmoke;
+}
+
+a:visited {
+  text-decoration: none;
+  color: whitesmoke;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+a:active {
+  text-decoration: none;
+  background-color: #5dbaec;
+}
+.nav--button {
+  font-weight: 600;
+  padding: 35px;
+  /* height: 90px; */
+
+}
+
+.signup-button {
+  margin-right: -25px;
+  right: 100;
+}
+
+.nav--button:hover {
+  background-color: #5dbaec;
 }
 
 .nav--logo_text {
   font-size: 25px;
+  font-weight: 700;
   color: whitesmoke;
   height: 30px;
-  margin-right: auto
+  margin-right: auto;
+  /* text-decoration: none; */
 }
 .nav--icon {
   width: 30px;

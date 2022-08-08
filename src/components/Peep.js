@@ -1,21 +1,23 @@
 import React, { useState } from "react";
 import dateTimeFormatter from "../helper_modules/dateFormatter";
+import setHeartColour from '../helper_modules/setHeartColour'
 
 export default function Peep(props) {
 
   const [isLiked, setIsLiked] = useState(false)
+  const [likeCount, setLikeCount] = useState(props.likes.length)
 
-  
-  const setHeartColour = (boolean) => {
-    if (boolean === false) {
-      return {color: "gray"}
-    } else {
-      return {color: "red"}
-    }
-  }
+  const timeFormatted = props.created_at.slice(11,16)
 
   const handleHeartClick = () => {
-    setIsLiked(!isLiked)
+    if (isLiked === false) {
+      setIsLiked(true)
+      setLikeCount(likeCount + 1)
+    } else {
+      setIsLiked(false)
+      setLikeCount(likeCount - 1)
+    }
+  
   }
 
   return (
@@ -25,12 +27,16 @@ export default function Peep(props) {
         <span>{dateTimeFormatter(props.created_at)}</span>
       </div>
       <div>
-        <span className="peep--bodytext">"{props.body}"</span>
+        <span className="peep--bodytext">"{props.body}" </span>
+        <span>{timeFormatted}</span>
       </div>
       <div>
       <i class="fa-solid fa-heart" style={setHeartColour(isLiked)} onClick={handleHeartClick}></i>
-        <span className="peep--likes"> {props.likes.length}</span>
+        <span className="peep--likes"> {likeCount}</span>
       </div>
     </div>
   )
 }
+
+// {"id":1115,"handle":"archieparchie"}
+//  {"user_id":1115,"session_key":"_2a_12_xv2joPzeWLXvqubH7OEVxO"}
