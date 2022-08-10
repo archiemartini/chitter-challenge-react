@@ -76,7 +76,12 @@ body {
 }
 
 .error-message {
-  color: red;
+  color: rgb(179, 1, 1);
+  margin-left: 20px;
+}
+
+.success-message {
+  color: rgb(4, 168, 4);
   margin-left: 20px;
 }
 

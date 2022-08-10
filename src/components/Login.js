@@ -58,10 +58,18 @@ export default function Login(props) {
         />
         <input type='submit' value="Login" />
       </form> 
-      {
-      loginFailed &&
-      <span className="error-message">login failed</span>  
-      }
+      <div>
+        {
+        loginFailed &&
+        <span className="error-message">login failed</span>  
+        }
+      </div>
+      <div>
+        {
+        props.signUpSuccessful &&
+        <span className="success-message">sign up successful!</span>
+        }
+      </div>
     </>
   )
 }
