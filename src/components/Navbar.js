@@ -2,15 +2,21 @@ import React from "react";
 
 export default function Navbar() {
   return (
-    <nav>
-      <div>
-        <img src="/chit.png" className="nav--icon" alt="chit-icon"></img>
-        <a href='/' className="nav--logo_text">Chitter</a>
-      </div>
-      <div >
-        <a href='/login' className="nav--button">Login </a>
-        <a href='/signup' className="nav--button signup-button"> SignUp</a>
-      </div>
+    <nav className="nav">
+    <div className="sitelogotext">
+      <img src='/chit.png' className="site-logo"></img>
+      <a href="/" className="site-title">
+        Chitter
+      </a>
+    </div>
+      <ul>
+        <li>
+          <a href="/login">Login</a>
+        </li>
+        <li>
+          <a href="/signup">Sign Up</a>
+        </li>
+      </ul>
     </nav>
   )
 }
