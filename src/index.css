@@ -71,14 +71,19 @@ body {
   background-color: #83BFEC;
 }
 
-.signup-form, .login-form {
-  margin: 1rem
+.signup-form, .login-form, .post-form {
+  margin: 20px;
 }
 
+.error-message {
+  color: red;
+  margin-left: 20px;
+}
 
 .header {
   margin-left: 20px;
 }
+
 
 .main-container {
   display: flex;
