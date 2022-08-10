@@ -3,15 +3,16 @@ import { Link, useMatch, useResolvedPath } from "react-router-dom"
 
 export default function Navbar() {
 
-  const path = window.location.pathname
   return (
     <nav className="nav">
-    <div className="sitelogotext">
-      <img src='/chit.png' className="site-logo"></img>
-      <Link to="/" className="site-title">
-        Chitter
-      </Link>
-    </div>
+      <div className="sitelogotext">
+        <Link to='/'>
+          <img src='/chit.png' className="site-logo" alt="site-logo"></img>
+        </Link>
+        <Link to="/" className="site-title">
+          Chitter
+        </Link>
+      </div>
       <ul>
         <CustomLink to="/login">Login</CustomLink>
         <CustomLink to="/signup">Sign Up</CustomLink>

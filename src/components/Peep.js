@@ -22,13 +22,13 @@ export default function Peep(props) {
 
   return (
     <div className="peep">
-      <div>
+      <div className="peep--info">
         <span className="peep--username">{props.user.handle} </span>
-        <span>{dateTimeFormatter(props.created_at)}</span>
-      </div>
-      <div>
-        <span className="peep--bodytext">"{props.body}" </span>
+        <span className="peep--date">{dateTimeFormatter(props.created_at)}</span>
         <span>{timeFormatted}</span>
+      </div>
+      <div className="peep--bodytext">
+        <span>"{props.body}" </span>
       </div>
       <div>
       <i class="fa-solid fa-heart" style={setHeartColour(isLiked)} onClick={handleHeartClick}></i>
