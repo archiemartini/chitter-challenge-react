@@ -13,7 +13,6 @@ export default function Home(props) {
     }
   }
 
-
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -27,16 +26,7 @@ export default function Home(props) {
     fetchData()
   }, [])
 
-  const peepList =
-    peepData.map((peep) => {
-      return (
-        <Peep 
-        key={peep.id}
-        {...peep}
-        />
-      )
-    })
-
+  
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -46,12 +36,33 @@ export default function Home(props) {
           'Authorization': `Token token=${props.userData.session_key}`
         }
       })
-      console.log(response.data)
+      //dynamic adding of new post
+      const newDOMPeep = {
+        body: peepMessage, id: Math.floor(Math.random() * 10) + 1, 
+        created_at: new Date().toISOString(), 
+        likes: [],
+        user: {
+          id: props.userData.user_id, handle: props.userData.username
+        }
+      }
+      const newPeepData = [...peepData]
+      newPeepData.unshift(newDOMPeep)
+      setPeepData(newPeepData)
     } catch (err) {
       console.log(`Error: ${err.message}`)
     }
-
+    
   }
+  
+  const peepList =
+    peepData.map((peep) => {
+      return (
+        <Peep 
+        key={peep.id}
+        {...peep}
+        />
+      )
+    })
 
   return (
     <div>
