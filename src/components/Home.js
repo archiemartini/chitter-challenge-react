@@ -2,9 +2,10 @@ import React, { useState, useEffect } from "react";
 import Peep from "./Peep"
 import api from '../api/base'
 
-export default function Home() {
+export default function Home(props) {
 
   const [peepData, setPeepData] = useState([])
+
 
   useEffect(() => {
     const fetchData = async () => {
@@ -31,7 +32,8 @@ export default function Home() {
 
   return (
     <>
-      <h1 className="header">News Feed</h1>
+      {props.loggedIn && <h1 className="header">Hey there, {props.userData.username}</h1>}
+      <h2 className="header">News Feed</h2>
       <div className="main-container">
         <div className="peeps-container">
           {peepList}

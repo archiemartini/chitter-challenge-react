@@ -10,13 +10,12 @@ export default function App() {
   const [loggedIn, setLoggedIn] = useState(false)
   const [userData, setUserData] = useState({ user_id:"", session_key:"", username:"" })
 
-  console.log(userData)
 
   return (
     <>
-     <Navbar loggedIn={loggedIn}/>
+     <Navbar loggedIn={loggedIn} setUserData={setUserData}/>
      <Routes>
-        <Route path='/' element={<Home userData={userData} />} />
+        <Route path='/' element={<Home userData={userData} loggedIn={loggedIn} />} />
         <Route path='/login' element={<Login setLoggedIn={setLoggedIn} setUserData={setUserData}/>} />
         <Route path='/signup' element={<SignUp />} />
      </Routes>

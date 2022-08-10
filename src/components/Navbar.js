@@ -1,7 +1,13 @@
 import React from "react";
 import { Link, useMatch, useResolvedPath } from "react-router-dom"
 
-export default function Navbar() {
+
+export default function Navbar(props) {
+
+  const handleLogout = () => {
+    //hard refreshes the app
+    window.location.pathname = "/"
+  }
 
   return (
     <nav className="nav">
@@ -13,10 +19,18 @@ export default function Navbar() {
           Chitter
         </Link>
       </div>
+      {props.loggedIn ? 
+      <ul>
+        <li>
+          <a onClick={handleLogout}>Logout</a>
+        </li>
+      </ul>  
+      :
       <ul>
         <CustomLink to="/login">Login</CustomLink>
         <CustomLink to="/signup">Sign Up</CustomLink>
       </ul>
+      }
     </nav>
   )
 
