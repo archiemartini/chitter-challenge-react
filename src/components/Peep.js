@@ -6,8 +6,10 @@ export default function Peep(props) {
 
   const [isLiked, setIsLiked] = useState(false)
   const [likeCount, setLikeCount] = useState(props.likes.length)
-
+ 
   const timeFormatted = props.created_at.slice(11,16)
+
+  const isUsersPost = props.userData.user_id === props.user.id ? true : false;
 
   const handleHeartClick = () => {
     if (isLiked === false) {
@@ -28,8 +30,6 @@ export default function Peep(props) {
     <div className="peep">
       <div className="peep--info">
         <span className="peep--username">{props.user.handle} </span>
-        <span className="peep--date">{dateTimeFormatter(props.created_at)}</span>
-        <span>{timeFormatted}</span>
       </div>
       <div className="peep--bodytext">
         <span>"{props.body}" </span>
@@ -37,10 +37,14 @@ export default function Peep(props) {
       <div>
         <i class="fa-solid fa-heart" style={setHeartColour(isLiked)} onClick={handleHeartClick}></i>
         <span className="peep--likes"> {likeCount}</span>
+        <span className="peep--date">{dateTimeFormatter(props.created_at)}</span>
+        <span>{timeFormatted}</span>
       </div>
+      { isUsersPost &&
       <div className="peep--delete-circle" onClick={handleDeleteClick}>
         <div className="peep--delete-x" onClick={handleDeleteClick}>x</div>
       </div>
+      }
     </div>
   )
 }
