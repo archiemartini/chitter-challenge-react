@@ -20,6 +20,10 @@ export default function Peep(props) {
   
   }
 
+  const handleDeleteClick = () => {
+    props.deletePeep(props.id)
+  }
+
   return (
     <div className="peep">
       <div className="peep--info">
@@ -31,8 +35,11 @@ export default function Peep(props) {
         <span>"{props.body}" </span>
       </div>
       <div>
-      <i class="fa-solid fa-heart" style={setHeartColour(isLiked)} onClick={handleHeartClick}></i>
+        <i class="fa-solid fa-heart" style={setHeartColour(isLiked)} onClick={handleHeartClick}></i>
         <span className="peep--likes"> {likeCount}</span>
+      </div>
+      <div className="peep--delete-circle" onClick={handleDeleteClick}>
+        <div className="peep--delete-x" onClick={handleDeleteClick}>x</div>
       </div>
     </div>
   )

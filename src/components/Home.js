@@ -6,6 +6,9 @@ export default function Home(props) {
 
   const [peepData, setPeepData] = useState([])
   const [peepMessage, setPeepMessage] = useState("")
+
+  const userData = props.userData
+
   const newPeep = {
     "peep": {
       "user_id": props.userData.user_id,
@@ -20,11 +23,26 @@ export default function Home(props) {
         setPeepData(response.data)
         console.log(response.data)
       } catch (err) {
-
+        console.log(`Error: ${err.message}`)
       }
     }
     fetchData()
   }, [])
+
+  const deletePeep = async (peepId) => {
+    const newPeepData = peepData.filter((peep) => peep.id !== peepId)
+    setPeepData(newPeepData)
+    try {
+      const response = api.delete(`/peeps/${peepId}`, {
+        headers: {
+          'Authorization': `Token token=${userData.session_key}`
+        }
+      } )
+    } catch (err) {
+      console.log(`Error: ${err.message}`)
+    }
+
+  }
 
   
   const handleSubmit = async (e) => {
@@ -33,18 +51,11 @@ export default function Home(props) {
       const response = await api.post('/peeps', newPeep, {
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': `Token token=${props.userData.session_key}`
+          'Authorization': `Token token=${userData.session_key}`
         }
       })
       //dynamic adding of new post
-      const newDOMPeep = {
-        body: peepMessage, id: Math.floor(Math.random() * 10) + 1, 
-        created_at: new Date().toISOString(), 
-        likes: [],
-        user: {
-          id: props.userData.user_id, handle: props.userData.username
-        }
-      }
+      const newDOMPeep = response.data
       const newPeepData = [...peepData]
       newPeepData.unshift(newDOMPeep)
       setPeepData(newPeepData)
@@ -59,6 +70,8 @@ export default function Home(props) {
       return (
         <Peep 
         key={peep.id}
+        userData={userData}
+        deletePeep={deletePeep}
         {...peep}
         />
       )
