@@ -7,9 +7,9 @@ curl "https://chitter-backend-api-v2.herokuapp.com/peeps" \
 
 
   //adds like to post
-  curl "https://chitter-backend-api-v2.herokuapp.com/peeps/1461/likes/1115" \
+  curl "https://chitter-backend-api-v2.herokuapp.com/peeps/1458/likes/1120" \
   -X PUT \
-  -H "Authorization: Token token=_2a_12_xv2joPzeWLXvqubH7OEVxO"
+  -H "Authorization: Token token=_2a_12_GiaUZHZVn6L4fQKgFVZXMe"
 
 
 {

@@ -21,7 +21,7 @@ export default function Navbar(props) {
       </div>
       {props.loggedIn ? 
       <ul>
-        <li>
+        <li className="logout--link">
           <a onClick={handleLogout}>Logout</a>
         </li>
       </ul>  

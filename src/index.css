@@ -71,6 +71,10 @@ body {
   background-color: #83BFEC;
 }
 
+.logout--link {
+  cursor: pointer;
+}
+
 .signup-form, .login-form, .post-form {
   margin: 20px;
 }

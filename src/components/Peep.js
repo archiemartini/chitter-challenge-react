@@ -1,25 +1,70 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom"
 import dateTimeFormatter from "../helper_modules/dateFormatter";
 import setHeartColour from '../helper_modules/setHeartColour'
+import api from "../api/base"
 
 export default function Peep(props) {
 
   const [isLiked, setIsLiked] = useState(false)
   const [likeCount, setLikeCount] = useState(props.likes.length)
+
+  const nav = useNavigate()
  
   const timeFormatted = props.created_at.slice(11,16)
 
   const isUsersPost = props.userData.user_id === props.user.id ? true : false;
 
-  const handleHeartClick = () => {
-    if (isLiked === false) {
+  const isLikedByUser = () => {
+    let liked = props.likes.map((like) => {
+      if (props.userData.user_id === like.user.id) {
+        return true
+      } else {
+        return false
+      }
+    })
+    if (liked.includes(true)) {
+      // setIsLiked(true)
+      return true
+    } else {
+      // setIsLiked(false)
+      return false
+    }
+  }
+  
+  const handleHeartClick = async () => {
+    if (props.userData.user_id === "") {
+      nav("/login")
+    } else if (isLiked === false) {
       setIsLiked(true)
       setLikeCount(likeCount + 1)
+      console.log(props.id, props.userData.user_id, props.userData.session_key)
+      
+      try {
+        const headers = {
+          'Authorization': `Token token=${props.userData.session_key}`
+        }
+        const response = await api.put(`/peeps/${props.id}/likes/${props.userData.user_id}`, null ,{ headers })
+        console.log(response.data)
+
+      } catch (err) {
+        console.log(`Error: ${err.message}`)
+      }
+
     } else {
+
+      try {
+        const headers ={
+          'Authorization': `Token token=${props.userData.session_key}`
+        }
+        const response = await api.delete(`/peeps/${props.id}/likes/${props.userData.user_id}`, { headers })
+        console.log(response.data)
+      } catch (err) {
+        console.log(`Error: ${err.message}`)
+      }
       setIsLiked(false)
-      setLikeCount(likeCount - 1)
+      setLikeCount(likeCount -1)
     }
-  
   }
 
   const handleDeleteClick = () => {
@@ -35,7 +80,10 @@ export default function Peep(props) {
         <span>"{props.body}" </span>
       </div>
       <div>
-        <i class="fa-solid fa-heart" style={setHeartColour(isLiked)} onClick={handleHeartClick}></i>
+        <i class="fa-solid fa-heart"
+          style={setHeartColour(isLiked || isLikedByUser())}
+          onClick={handleHeartClick}
+        />
         <span className="peep--likes"> {likeCount}</span>
         <span className="peep--date">{dateTimeFormatter(props.created_at)}</span>
         <span>{timeFormatted}</span>

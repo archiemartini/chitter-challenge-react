@@ -33,7 +33,7 @@ export default function Home(props) {
     const newPeepData = peepData.filter((peep) => peep.id !== peepId)
     setPeepData(newPeepData)
     try {
-      const response = api.delete(`/peeps/${peepId}`, {
+      const response = await api.delete(`/peeps/${peepId}`, {
         headers: {
           'Authorization': `Token token=${userData.session_key}`
         }
