@@ -21,7 +21,7 @@ export default function Home(props) {
       try {
         const response = await api.get('/peeps')
         setPeepData(response.data)
-        console.log(response.data)
+        console.log("UserData", response.data)
       } catch (err) {
         console.log(`Error: ${err.message}`)
       }
@@ -33,6 +33,7 @@ export default function Home(props) {
     const newPeepData = peepData.filter((peep) => peep.id !== peepId)
     setPeepData(newPeepData)
     try {
+      // eslint-disable-next-line
       const response = await api.delete(`/peeps/${peepId}`, {
         headers: {
           'Authorization': `Token token=${userData.session_key}`
@@ -62,6 +63,7 @@ export default function Home(props) {
     } catch (err) {
       console.log(`Error: ${err.message}`)
     }
+    setPeepMessage("")
     
   }
   

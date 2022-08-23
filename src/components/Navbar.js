@@ -16,19 +16,19 @@ export default function Navbar(props) {
           <img src='/chit.png' className="site-logo" alt="site-logo"></img>
         </Link>
         <Link to="/" className="site-title">
-          Chitter
+          architter
         </Link>
       </div>
       {props.loggedIn ? 
       <ul>
-        <li className="logout--link">
-          <a onClick={handleLogout}>Logout</a>
+        <li className="logout--link" >
+          <a onClick={handleLogout} href="/">Logout</a>
         </li>
       </ul>  
       :
       <ul>
-        <CustomLink to="/login">Login</CustomLink>
-        <CustomLink to="/signup">Sign Up</CustomLink>
+        <CustomLink to="/login">login</CustomLink>
+        <CustomLink to="/signup">signUp</CustomLink>
       </ul>
       }
     </nav>

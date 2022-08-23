@@ -8,6 +8,6 @@ test('renders the project name', () => {
     <Navbar />
   );
 
-  const nameElement = screen.getByText(/Chitter/i)
+  const nameElement = screen.getByText(/architter/i)
   expect(nameElement).toBeInTheDocument
 })
