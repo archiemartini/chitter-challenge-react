@@ -81,7 +81,7 @@ export default function Peep(props) {
       </div>
       <div>
         <i class="fa-solid fa-heart"
-          style={setHeartColour(isLiked || isLikedByUser())}
+          style={isLiked ? {color: "red"} : {color: "gray"}}
           onClick={handleHeartClick}
         />
         <span className="peep--likes"> {likeCount}</span>
