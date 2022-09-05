@@ -79,8 +79,16 @@ body {
   cursor: pointer;
 }
 
+/* .home {
+  display: flex;
+  align-items: center;
+} */
+
 .signup-form, .login-form, .post-form {
-  margin: 20px;
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .error-message {
@@ -94,27 +102,33 @@ body {
 }
 
 .header {
-  margin-left: 20px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 
 .main-container {
   display: flex;
   align-items: center;
+  margin-left: auto;
+  margin-right: auto;
+
 }
 
 .peeps-container {
-  padding: 20px;
+  /* padding: 50px; */
   display: flex;
   flex-flow: column wrap;
   justify-content: auto;
-  align-items: flex-start;
+  align-items: center;
+  margin-left: auto;
+  margin-right: auto;
   
 }
 
 .peep {
   background-color: #d4dce1;
-  width: 500px;
+  width: 300px;
   border-radius: 2px;
   padding: 5px;
   /* align-self: flex-start; */

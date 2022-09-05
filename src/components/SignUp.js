@@ -32,9 +32,12 @@ export default function SignUp(props) {
   }
 
   return (
-    <>
-      <h1 className="header">Sign Up</h1>
-      <form className="signup-form" onSubmit={handleSubmit}>
+    <div className="main-container">
+    <div className="signup-form">
+      <div>
+        <h1 className="header">Sign Up</h1>
+      </div>
+      <form onSubmit={handleSubmit}>
         <input 
           type='text' 
           name="text"
@@ -54,6 +57,7 @@ export default function SignUp(props) {
         />
         <input type='submit' value="Sign Up" />
       </form> 
-    </>
+    </div>
+    </div>
   )
 }

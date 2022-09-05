@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom"
 import dateTimeFormatter from "../helper_modules/dateFormatter";
 import setHeartColour from '../helper_modules/setHeartColour'
 import api from "../api/base"
+import FavoriteIcon from '@mui/icons-material/Favorite';
 
 export default function Peep(props) {
 
@@ -80,9 +81,10 @@ export default function Peep(props) {
         <span>"{props.body}" </span>
       </div>
       <div>
-        <i class="fa-solid fa-heart"
+        <FavoriteIcon
           style={isLiked ? {color: "red"} : {color: "gray"}}
           onClick={handleHeartClick}
+          className="peep--likethumb"
         />
         <span className="peep--likes"> {likeCount}</span>
         <span className="peep--date">{dateTimeFormatter(props.created_at)}</span>

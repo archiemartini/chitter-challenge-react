@@ -36,9 +36,11 @@ export default function Login(props) {
   }
 
   return (
-    <>
-      <h1 className="header">Login</h1>
+    <div className="main-container">
       <form className="login-form" onSubmit={handleSubmit}>
+        <div>
+          <h1 className="header">Login</h1>
+        </div>
         <input 
           type='text' 
           name="text"
@@ -70,6 +72,6 @@ export default function Login(props) {
         <span className="success-message">sign up successful!</span>
         }
       </div>
-    </>
+    </div>
   )
 }

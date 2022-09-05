@@ -1,5 +1,6 @@
 import React from "react";
 import { Link, useMatch, useResolvedPath } from "react-router-dom"
+import Diversity1Icon from '@mui/icons-material/Diversity1';
 
 
 export default function Navbar(props) {
@@ -13,6 +14,7 @@ export default function Navbar(props) {
     <nav className="nav">
       <div className="sitelogotext">
         <Link to='/'>
+          {/* <Diversity1Icon className="site-logo" /> */}
           <img src='/chit.png' className="site-logo" alt="site-logo"></img>
         </Link>
         <Link to="/" className="site-title">
