@@ -87,7 +87,7 @@ export default function Peep(props) {
             style={isLiked ? {color: "red"} : {color: "gray"}}
             onClick={handleHeartClick}
             className="peep--delete-icon"
-            fontSize="smaller"
+            fontSize="small"
           />
           <span className="peep--likes-count"> {likeCount}</span>
         </div>
