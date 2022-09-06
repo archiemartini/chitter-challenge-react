@@ -37,26 +37,28 @@ export default function SignUp(props) {
       <div>
         <h1 className="header">Sign Up</h1>
       </div>
-      <form onSubmit={handleSubmit}>
-        <input 
-          type='text' 
-          name="text"
-          placeholder="username"
-          required
-          value={signUpUsername}
-          onChange={e => setSignUpUsername(e.target.value)}
-        />
-        <input 
-          type='password'
-          name="password" 
-          placeholder="password"
-          required
-          value={signUpPassword}
-          onChange={e => setSignUpPassword(e.target.value)}
+        <form onSubmit={handleSubmit}>
+          <input 
+            type='text' 
+            name="text"
+            placeholder="username"
+            required
+            value={signUpUsername}
+            onChange={e => setSignUpUsername(e.target.value)}
+          />
+          <br/>
+          <input 
+            type='password'
+            name="password" 
+            placeholder="password"
+            required
+            value={signUpPassword}
+            onChange={e => setSignUpPassword(e.target.value)}
 
-        />
-        <input type='submit' value="Sign Up" />
-      </form> 
+          />
+          <br/>
+          <input type='submit' value="Sign Up" />
+        </form> 
     </div>
     </div>
   )

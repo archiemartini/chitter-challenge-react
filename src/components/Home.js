@@ -51,30 +51,30 @@ export default function Home(props) {
   
   const handleSubmit = async (e) => {
     e.preventDefault();
-    try {
-      const response = await api.post('/peeps', newPeep, {
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Token token=${userData.session_key}`
-        }
-      })
-      //dynamic adding of new post
-      const newDOMPeep = response.data
-      const newPeepData = [...peepData]
-      newPeepData.unshift(newDOMPeep)
-      setPeepData(newPeepData)
-    } catch (err) {
-      console.log(`Error: ${err.message}`)
-    }
-    setPeepMessage("")
-    
-  }
-
-  const handleInputClick = () => {
     if (props.userData.user_id === "") {
       nav("/login")
+    } else {
+
+      try {
+        const response = await api.post('/peeps', newPeep, {
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Token token=${userData.session_key}`
+          }
+        })
+        //dynamic adding of new post
+        const newDOMPeep = response.data
+        const newPeepData = [...peepData]
+        newPeepData.unshift(newDOMPeep)
+        setPeepData(newPeepData)
+      } catch (err) {
+        console.log(`Error: ${err.message}`)
+      }
+      setPeepMessage("")
+      
     }
   }
+
   
   const peepList =
     peepData.map((peep) => {
@@ -90,19 +90,17 @@ export default function Home(props) {
 
   return (
     <div>
+    {
+      props.loggedIn &&
+     <div>
       <div className="post-form">
-        <div>
-            <h2 className="header">News Feed</h2>
-        </div>
       <form className="post-form" onSubmit={handleSubmit}>
-        {props.loggedIn && <h1 className="header">Hey there, {props.userData.username}</h1>}
         <input 
           type="text" 
           name="text"
           placeholder="What's on your mind?"
           value={peepMessage}
           onChange={e => setPeepMessage(e.target.value)}
-          onClick={handleInputClick}
         />
         <input 
           type='submit' 
@@ -110,6 +108,8 @@ export default function Home(props) {
         />
       </form>
       </div>  
+     </div> 
+    }
       <div className="main-container">
         <div className="peeps-container">
           {peepList}

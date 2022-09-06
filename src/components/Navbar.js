@@ -1,6 +1,7 @@
 import React from "react";
 import { Link, useMatch, useResolvedPath } from "react-router-dom"
 import Diversity1Icon from '@mui/icons-material/Diversity1';
+import { Divider } from "@mui/material";
 
 
 export default function Navbar(props) {
@@ -22,16 +23,22 @@ export default function Navbar(props) {
         </Link>
       </div>
       {props.loggedIn ? 
-      <ul>
-        <li className="logout--link" >
-          <a onClick={handleLogout} href="/">Logout</a>
-        </li>
-      </ul>  
+        <ul>
+          <li className="no-pointer-event">
+            <div className="user--logout no-pointer-event">
+            <span>Hey, {props.userData.username}</span>
+            <span className="separator">|</span>
+            </div>
+          </li>
+          <li className="logout--link" >
+            <a onClick={handleLogout} href="/">Logout</a>
+          </li>
+        </ul>  
       :
-      <ul>
-        <CustomLink to="/login">login</CustomLink>
-        <CustomLink to="/signup">signUp</CustomLink>
-      </ul>
+        <ul>
+          <CustomLink to="/login">Login</CustomLink>
+          <CustomLink to="/signup">Sign Up</CustomLink>
+        </ul>
       }
     </nav>
   )

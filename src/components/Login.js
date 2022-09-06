@@ -37,34 +37,38 @@ export default function Login(props) {
 
   return (
     <div className="main-container">
-      <form className="login-form" onSubmit={handleSubmit}>
-        <div>
-          <h1 className="header">Login</h1>
-        </div>
-        <input 
-          type='text' 
-          name="text"
-          placeholder="username"
-          required
-          value={loginUsername}
-          onChange={e => setLoginUsername(e.target.value)}
-        />
-        <input 
-          type='password'
-          name="password" 
-          placeholder="password"
-          required
-          value={loginPassword}
-          onChange={e => setLoginPassword(e.target.value)}
+      <div className="login-form">
+          <div>
+            <h1 className="header">Login</h1>
+          </div>
+        <form onSubmit={handleSubmit}>
+            <input 
+              type='text' 
+              name="text"
+              placeholder="username"
+              required
+              value={loginUsername}
+              onChange={e => setLoginUsername(e.target.value)}
+            />
+          <br/>
+            <input 
+              type='password'
+              name="password" 
+              placeholder="password"
+              required
+              value={loginPassword}
+              onChange={e => setLoginPassword(e.target.value)}
 
-        />
-        <input type='submit' value="Login" />
-      </form> 
-      <div>
-        {
-        loginFailed &&
-        <span className="error-message">login failed</span>  
-        }
+            />
+          <br/>
+            <input type='submit' value="Login" />
+        </form> 
+        <div>
+          {
+          loginFailed &&
+          <span className="error-message">login failed</span>  
+          }
+        </div>
       </div>
       <div>
         {

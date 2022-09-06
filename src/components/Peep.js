@@ -4,6 +4,7 @@ import dateTimeFormatter from "../helper_modules/dateFormatter";
 import setHeartColour from '../helper_modules/setHeartColour'
 import api from "../api/base"
 import FavoriteIcon from '@mui/icons-material/Favorite';
+import RemoveCircleIcon from '@mui/icons-material/RemoveCircle';
 
 export default function Peep(props) {
 
@@ -74,27 +75,33 @@ export default function Peep(props) {
 
   return (
     <div className="peep">
-      <div className="peep--info">
-        <span className="peep--username">{props.user.handle} </span>
+      <div className="peep--contents">
+        <div className="peep--info">
+          <span className="peep--username">@{props.user.handle} </span>
+        </div>
+        <div className="peep--bodytext">
+          <span>{props.body} </span>
+        </div>
+        <div className="peep--likes">
+          <FavoriteIcon
+            style={isLiked ? {color: "red"} : {color: "gray"}}
+            onClick={handleHeartClick}
+            className="peep--heart-icon"
+            fontSize="small"
+          />
+          <span className="peep--likes-count"> {likeCount}</span>
+        </div>
+        <div className="peep--date-time">
+          <span className="peep--date">{dateTimeFormatter(props.created_at)}</span>
+          <span>{timeFormatted}</span>
+        </div>
+        { isUsersPost &&
+        <div className="peep--delete-circle" onClick={handleDeleteClick}>
+          <RemoveCircleIcon fontSize="small" color="primary" className="peep--delete-circle" />
+        </div>
+        }
+
       </div>
-      <div className="peep--bodytext">
-        <span>"{props.body}" </span>
-      </div>
-      <div>
-        <FavoriteIcon
-          style={isLiked ? {color: "red"} : {color: "gray"}}
-          onClick={handleHeartClick}
-          className="peep--likethumb"
-        />
-        <span className="peep--likes"> {likeCount}</span>
-        <span className="peep--date">{dateTimeFormatter(props.created_at)}</span>
-        <span>{timeFormatted}</span>
-      </div>
-      { isUsersPost &&
-      <div className="peep--delete-circle" onClick={handleDeleteClick}>
-        <div className="peep--delete-x" onClick={handleDeleteClick}>x</div>
-      </div>
-      }
     </div>
   )
 }

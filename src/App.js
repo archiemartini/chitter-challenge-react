@@ -13,7 +13,7 @@ export default function App() {
 
   return (
     <>
-     <Navbar loggedIn={loggedIn} setUserData={setUserData}/>
+     <Navbar loggedIn={loggedIn} setUserData={setUserData} userData={userData}/>
      <Routes>
         <Route path='/' element={<Home userData={userData} loggedIn={loggedIn} />} />
         <Route path='/login' element={<Login setLoggedIn={setLoggedIn} setUserData={setUserData} signUpSuccessful={signUpSuccessful}/>} />
