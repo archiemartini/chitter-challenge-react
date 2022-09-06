@@ -2,6 +2,21 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom"
 import Peep from "./Peep"
 import api from '../api/base'
+import { TextField, styled, Button } from "@mui/material";
+
+const CustomizedTextField = styled(TextField)`
+  margin-top: 25px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 7.5px
+`;
+
+const CustomButton = styled(Button)`
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom -20px;
+`;
+
 
 export default function Home(props) {
 
@@ -92,20 +107,21 @@ export default function Home(props) {
     <div>
     {
       props.loggedIn &&
+
      <div>
+      <span className="top-left">Hey, {userData.username}!</span>
       <div className="post-form">
-      <form className="post-form" onSubmit={handleSubmit}>
-        <input 
-          type="text" 
-          name="text"
+      <form className="post-form">
+        <CustomizedTextField 
           placeholder="What's on your mind?"
           value={peepMessage}
           onChange={e => setPeepMessage(e.target.value)}
+          fullWidth
         />
-        <input 
-          type='submit' 
-          value='Submit' 
-        />
+        <CustomButton 
+          type="submit" 
+          variant="outlined" 
+          onClick={handleSubmit}>Submit</CustomButton>
       </form>
       </div>  
      </div> 

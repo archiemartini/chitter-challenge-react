@@ -24,12 +24,12 @@ export default function Navbar(props) {
       </div>
       {props.loggedIn ? 
         <ul>
-          <li className="no-pointer-event">
+          {/* <li className="no-pointer-event">
             <div className="user--logout no-pointer-event">
             <span>Hey, {props.userData.username}</span>
             <span className="separator">|</span>
             </div>
-          </li>
+          </li> */}
           <li className="logout--link" >
             <a onClick={handleLogout} href="/">Logout</a>
           </li>

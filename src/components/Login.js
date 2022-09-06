@@ -1,8 +1,22 @@
 import React, {useState} from "react"
 import { useNavigate } from "react-router-dom"
 import api from '../api/base'
+import { styled, TextField, Button } from "@mui/material"
+
+const CustomizedTextField = styled(TextField)`
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 7.5px;
+`;
+
+const CustomButton = styled(Button)`
+  margin: auto;
+  width: 50%;
+`;
 
 export default function Login(props) {
+
+  
 
   const nav = useNavigate()
 
@@ -41,27 +55,22 @@ export default function Login(props) {
           <div>
             <h1 className="header">Login</h1>
           </div>
-        <form onSubmit={handleSubmit}>
-            <input 
-              type='text' 
-              name="text"
-              placeholder="username"
-              required
-              value={loginUsername}
+        <form noValidate autoComplete="off" onSubmit={handleSubmit}>
+            <CustomizedTextField 
+              label="username"
               onChange={e => setLoginUsername(e.target.value)}
             />
-          <br/>
-            <input 
-              type='password'
-              name="password" 
-              placeholder="password"
-              required
-              value={loginPassword}
+            <br/>
+            <CustomizedTextField 
+              label="password"
               onChange={e => setLoginPassword(e.target.value)}
-
+              type="password"
             />
-          <br/>
-            <input type='submit' value="Login" />
+            <br/>
+            <CustomButton 
+              type="submit" 
+              variant="outlined" 
+              onClick={handleSubmit}>Submit</CustomButton>
         </form> 
         <div>
           {
@@ -69,12 +78,6 @@ export default function Login(props) {
           <span className="error-message">login failed</span>  
           }
         </div>
-      </div>
-      <div>
-        {
-        props.signUpSuccessful &&
-        <span className="success-message">sign up successful!</span>
-        }
       </div>
     </div>
   )

@@ -1,6 +1,18 @@
 import React, {useState} from "react"
 import { useNavigate } from "react-router-dom"
 import api from '../api/base'
+import { styled, TextField, Button } from "@mui/material";
+
+const CustomizedTextField = styled(TextField)`
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 7.5px;
+`;
+
+const CustomButton = styled(Button)`
+  margin: auto;
+  width: 50%;
+`;
 
 export default function SignUp(props) {
 
@@ -37,27 +49,22 @@ export default function SignUp(props) {
       <div>
         <h1 className="header">Sign Up</h1>
       </div>
-        <form onSubmit={handleSubmit}>
-          <input 
-            type='text' 
-            name="text"
-            placeholder="username"
-            required
-            value={signUpUsername}
-            onChange={e => setSignUpUsername(e.target.value)}
-          />
-          <br/>
-          <input 
-            type='password'
-            name="password" 
-            placeholder="password"
-            required
-            value={signUpPassword}
-            onChange={e => setSignUpPassword(e.target.value)}
-
-          />
-          <br/>
-          <input type='submit' value="Sign Up" />
+        <form noValidate autoComplete="off" onSubmit={handleSubmit}>
+        <CustomizedTextField 
+        onChange={e => setSignUpUsername(e.target.value)}
+        label="username"
+        />
+        <br/>
+        <CustomizedTextField 
+        onChange={e => setSignUpUsername(e.target.value)}
+        label="password"
+        type="password"
+        />
+        <br/>
+          <CustomButton 
+            type="submit" 
+            variant="outlined" 
+            onClick={handleSubmit}>Submit</CustomButton>
         </form> 
     </div>
     </div>

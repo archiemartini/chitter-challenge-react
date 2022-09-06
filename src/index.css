@@ -101,6 +101,11 @@ body {
   margin-left: 20px;
 }
 
+.center {
+  margin: auto;
+  width: 50%;
+}
+
 .user--welcome {
   font-size: small;
   color: #2B91DE;
@@ -184,15 +189,15 @@ body {
 .peep--likes-count {
   margin-left: 5px;
   margin-right: 20px;
+  color: rgb(81, 81, 81);
 }
 
 .peep--date {
   margin-right: 10px;
 }
 .peep--bodytext {
-  padding-top: 5px;
-  padding-bottom: 5px;
-  /* padding: 10px; */
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 
 .peep--likethumb {
@@ -205,12 +210,25 @@ body {
   right: 0;
   padding-bottom: 5px;
   padding-right: 10px;
+  color: rgb(83, 81, 81);
+  font-size: smaller;
 }
 
 .peep--delete-circle {
   position: absolute;
   top: 0;
   right: 0;
+}
+
+.top-left {
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin-top: 75px;
+  color: #2B91DE;
+  margin-left: 10px;
+  font-weight: 600;
+  padding-bottom: 10px;
 }
 
 .peep--delete-icon {
