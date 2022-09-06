@@ -138,7 +138,7 @@ body {
   align-items: center;
   margin-left: auto;
   margin-right: auto;
-  padding-top: 30px;
+  
 
 }
 
@@ -220,6 +220,10 @@ body {
   right: 0;
 }
 
+.frontpage-gapper {
+  padding-top: 30px;
+}
+
 .top-left {
   position: absolute;
   top: 0;
@@ -235,7 +239,7 @@ body {
   margin-left: 3.5px;
   margin-top: -2px;
   color: rgb(73, 73, 73);
-  font-size: 15px;
+  width: 2px;
 }
 
 

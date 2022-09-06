@@ -103,15 +103,30 @@ export default function Home(props) {
       )
     })
 
+  const dayGreeting = () => {
+    var myDate = new Date();
+    var hrs = myDate.getHours();
+
+    var greet;
+    if (hrs < 12)
+        greet = 'Good morning';
+    else if (hrs >= 12 && hrs <= 17)
+        greet = 'Good afternoon';
+    else if (hrs >= 17 && hrs <= 24)
+        greet = 'Good evening';
+    
+    return greet
+  } 
+
   return (
     <div>
     {
-      props.loggedIn &&
+      props.loggedIn ?
 
      <div>
-      <span className="top-left">Hey, {userData.username}!</span>
+      <span className="top-left">{dayGreeting()}, {userData.username}!</span>
       <div className="post-form">
-      <form className="post-form">
+      <form className="post-form" autoComplete="off">
         <CustomizedTextField 
           placeholder="What's on your mind?"
           value={peepMessage}
@@ -125,6 +140,8 @@ export default function Home(props) {
       </form>
       </div>  
      </div> 
+     :
+     <div className="frontpage-gapper"/>
     }
       <div className="main-container">
         <div className="peeps-container">

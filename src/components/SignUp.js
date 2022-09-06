@@ -10,8 +10,7 @@ const CustomizedTextField = styled(TextField)`
 `;
 
 const CustomButton = styled(Button)`
-  margin: auto;
-  width: 50%;
+  margin-left: 50px;
 `;
 
 export default function SignUp(props) {
