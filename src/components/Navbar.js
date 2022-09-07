@@ -1,7 +1,5 @@
 import React from "react";
 import { Link, useMatch, useResolvedPath } from "react-router-dom"
-import Diversity1Icon from '@mui/icons-material/Diversity1';
-import { Divider } from "@mui/material";
 
 
 export default function Navbar(props) {
@@ -15,7 +13,6 @@ export default function Navbar(props) {
     <nav className="nav">
       <div className="sitelogotext">
         <Link to='/'>
-          {/* <Diversity1Icon className="site-logo" /> */}
           <img src='/chit.png' className="site-logo" alt="site-logo"></img>
         </Link>
         <Link to="/" className="site-title">
@@ -24,12 +21,6 @@ export default function Navbar(props) {
       </div>
       {props.loggedIn ? 
         <ul>
-          {/* <li className="no-pointer-event">
-            <div className="user--logout no-pointer-event">
-            <span>Hey, {props.userData.username}</span>
-            <span className="separator">|</span>
-            </div>
-          </li> */}
           <li className="logout--link" >
             <a onClick={handleLogout} href="/">Logout</a>
           </li>

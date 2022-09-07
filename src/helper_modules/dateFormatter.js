@@ -7,7 +7,7 @@ export default  function dateTimeFormatter(dateTimeString) {
       month = month[1]
      };
 
-    let calendar = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+    let calendar = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec']
     return calendar[month - 1]
   }
   

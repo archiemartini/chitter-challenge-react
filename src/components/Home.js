@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom"
+import { TextField, styled, Button } from "@mui/material";
 import Peep from "./Peep"
 import api from '../api/base'
-import { TextField, styled, Button } from "@mui/material";
+import dayGreeting from "../helper_modules/dayGreeting";
 
 const CustomizedTextField = styled(TextField)`
   margin-top: 25px;
@@ -14,7 +15,7 @@ const CustomizedTextField = styled(TextField)`
 const CustomButton = styled(Button)`
   margin-left: auto;
   margin-right: auto;
-  margin-bottom -20px;
+  margin-bottom: -5px;
 `;
 
 
@@ -89,7 +90,6 @@ export default function Home(props) {
       
     }
   }
-
   
   const peepList =
     peepData.map((peep) => {
@@ -102,21 +102,6 @@ export default function Home(props) {
         />
       )
     })
-
-  const dayGreeting = () => {
-    var myDate = new Date();
-    var hrs = myDate.getHours();
-
-    var greet;
-    if (hrs < 12)
-        greet = 'Good morning';
-    else if (hrs >= 12 && hrs <= 17)
-        greet = 'Good afternoon';
-    else if (hrs >= 17 && hrs <= 24)
-        greet = 'Good evening';
-    
-    return greet
-  } 
 
   return (
     <div>

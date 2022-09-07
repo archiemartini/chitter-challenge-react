@@ -55,7 +55,7 @@ export default function SignUp(props) {
         />
         <br/>
         <CustomizedTextField 
-        onChange={e => setSignUpUsername(e.target.value)}
+        onChange={e => setSignUpPassword(e.target.value)}
         label="password"
         type="password"
         />

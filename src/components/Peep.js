@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom"
 import dateTimeFormatter from "../helper_modules/dateFormatter";
-import setHeartColour from '../helper_modules/setHeartColour'
-import api from "../api/base"
+import api from "../api/base";
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import RemoveCircleIcon from '@mui/icons-material/RemoveCircle';
 
@@ -16,23 +15,6 @@ export default function Peep(props) {
   const timeFormatted = props.created_at.slice(11,16)
 
   const isUsersPost = props.userData.user_id === props.user.id ? true : false;
-
-  const isLikedByUser = () => {
-    let liked = props.likes.map((like) => {
-      if (props.userData.user_id === like.user.id) {
-        return true
-      } else {
-        return false
-      }
-    })
-    if (liked.includes(true)) {
-      // setIsLiked(true)
-      return true
-    } else {
-      // setIsLiked(false)
-      return false
-    }
-  }
   
   const handleHeartClick = async () => {
     if (props.userData.user_id === "") {
